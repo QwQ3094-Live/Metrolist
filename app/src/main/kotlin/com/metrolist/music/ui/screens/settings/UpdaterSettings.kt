@@ -21,6 +21,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarScrollBehavior
@@ -140,7 +141,16 @@ fun UpdaterScreen(
                         trailingContent = {
                             Switch(
                                 checked = checkForUpdates,
-                                onCheckedChange = onCheckForUpdatesChange
+                                onCheckedChange = onCheckForUpdatesChange,
+                                thumbContent = {
+                                    Icon(
+                                        painter = painterResource(
+                                            id = if (checkForUpdates) R.drawable.check else R.drawable.close
+                                        ),
+                                        contentDescription = null,
+                                        modifier = Modifier.size(SwitchDefaults.IconSize)
+                                    )
+                                }
                             )
                         },
                         onClick = { onCheckForUpdatesChange(!checkForUpdates) }
@@ -155,7 +165,16 @@ fun UpdaterScreen(
                             trailingContent = {
                                 Switch(
                                     checked = updateNotifications,
-                                    onCheckedChange = onUpdateNotificationsChange
+                                    onCheckedChange = onUpdateNotificationsChange,
+                                    thumbContent = {
+                                        Icon(
+                                            painter = painterResource(
+                                                id = if (updateNotifications) R.drawable.check else R.drawable.close
+                                            ),
+                                            contentDescription = null,
+                                            modifier = Modifier.size(SwitchDefaults.IconSize)
+                                        )
+                                    }
                                 )
                             },
                             onClick = { onUpdateNotificationsChange(!updateNotifications) }
